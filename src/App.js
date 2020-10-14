@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-
-// import Counter from './Counter';
 import Employee from './Employee';
 
-const employeeInfo = [
+
+const employee = [
   {
     f_name:"Sagar",
     l_name:"Parker",
@@ -22,28 +21,15 @@ const employeeInfo = [
   },
 ]
 
-function App() {
-
-  return (
-    <div className="App">
-      <header className="App-header">
-      <h2>Company Directory</h2>
-      {
-      employeeInfo.map(employee =>{
-        const {f_name,l_name} = employee;
-        return(
-          <Employee key={employee.id} f_name={f_name} l_name={l_name} />
-        )
-      })
-      }
-
-      {/* <Employee f_name="Sagar"  l_name="Parker" />
-      <Employee l_name="Verstapen" f_name="Max"  />
-      <Employee f_name="Lewis" l_name="Hamilton" /> */}
-
-      </header>
+function App(){
+  return(
+    <div className="App App-header">
+      {employee.map(emp =>
+        <Employee key={emp.id} f_name={emp.f_name} l_name={emp.l_name} id={emp.id}/>
+      )}
     </div>
-  );
+  )
 }
 
 export default App;
+
