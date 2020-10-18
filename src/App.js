@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './App.css';
-import Employee from './Employee';
-import Logo from './krishi.png'
+// import Employee from './Employee';
+// import Logo from './krishi.png'
 
 
 const employee = [
@@ -23,31 +23,32 @@ const employee = [
 ]
 
 function App(){
-  const [loggedIn,setLoggedIn] = useState(false);
-  const [num,setnum] = useState(69);
+  const [count,setCount] = useState(0);
+
+  // REACT COMPONENT LIFE CYCLE //
+
+  ///COMPONENT MOUNT//////
+    useEffect(()=>{
+    console.log("The use effect ran");
+  },[]);
+
+  ///COMPONENT UPDATE///////
+  useEffect(()=>{
+    console.log("The use effect ran");
+  },[count]);
+
+  ///COMPONENT UNMOUNT//////
+  useEffect(()=>{
+    return () => {
+  console.log("Unmounted the component")}
+  },[]);
+
+
+  
   return(
-    
-    <div className="App App-header">
-      {console.log(setLoggedIn)}
-  <button onClick={()=> setLoggedIn(!loggedIn)}>{loggedIn ? "Log Out" : "Log in"}</button>
-  <button onClick={()=> setnum(420)}>Change number</button>
-  <h1>{num}</h1>
-
-      {loggedIn ? (
-        <h3>Logged in</h3>
-      ) : (
-        <h3>Not logged in</h3>
-      )}
-
-
-
-      {
-       employee && employee.length > 1 && (
-          employee.map(emp =>
-            <Employee key={emp.id} f_name={emp.f_name} l_name={emp.l_name} id={emp.id}/>
-          )
-        )
-      }
+    <div className="App-header">
+      <p>Count : {count}</p>
+      <button onClick={()=>setCount(count + 1)}>Increment the Count</button>
     </div>
   )
 }
